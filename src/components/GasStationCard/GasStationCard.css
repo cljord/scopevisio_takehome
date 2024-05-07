@@ -1,3 +1,8 @@
 .gas-station-card {
 	border: 1px lightgrey solid;
 }
+
+.gas-station-logo {
+	height: 10%;
+	width: 10%;
+}

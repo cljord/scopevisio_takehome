@@ -7,6 +7,9 @@ import "./GasStations.css";
 const GasStations = ({gasStationData}) => {
 	const [processedGasStationData, setProcessedGasStationData] = useProcessGasStationData(gasStationData);
 
+	if (!gasStationData) {
+		return <div className="container" style={{textAlign: "center"}}>Lade Tankstellen...</div>;
+	}
 
 	return (
 		<div className="gas-stations container">
