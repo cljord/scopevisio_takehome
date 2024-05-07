@@ -6,6 +6,7 @@ import "./GasStations.css";
 
 const GasStations = ({gasStationData}) => {
 	const [processedGasStationData, setProcessedGasStationData] = useProcessGasStationData(gasStationData);
+	const [searchString, setSearchString] = useState("");
 
 	if (!gasStationData) {
 		return <div className="container" style={{textAlign: "center"}}>Lade Tankstellen...</div>;
@@ -24,13 +25,17 @@ const GasStations = ({gasStationData}) => {
 	return (
 		<div className="gas-stations container">
 			<p style={{textAlign: "center"}}>Here be gas stations</p>
-			<button onClick={() => sortGasStations(processedGasStationData)}>Hi</button>
-			<button onClick={() => sortGasStations(processedGasStationData, false)}>Hi2</button>
+			<button onClick={() => sortGasStations(processedGasStationData)}>Aufsteigende Sortierung</button>
+			<button onClick={() => sortGasStations(processedGasStationData, false)}>Absteigende Sortierung</button>
+			<input name="search-input" onChange={(e) => setSearchString(e.target.value.toLowerCase())}/>
 			<div className="gas-stations-grid">
 				{processedGasStationData && 
-					processedGasStationData.map((gasStation) => (
+					processedGasStationData
+					.filter((gasStation) => gasStation.attributes.adresse.toLowerCase().includes(searchString))
+					.map((gasStation) => (
 						<GasStationCard key={gasStation.attributes.objectid} gasStation={gasStation}/>
-				))}
+					))
+				}
 			</div>
 		</div>
 	)
