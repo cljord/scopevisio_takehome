@@ -10,7 +10,7 @@ const GasStations = ({gasStationData}) => {
 
 	return (
 		<div className="gas-stations container">
-			Here be gas stations
+			<p style={{textAlign: "center"}}>Here be gas stations</p>
 			<div className="gas-stations-grid">
 				{processedGasStationData && 
 					processedGasStationData.map((gasStation) => (

@@ -12,6 +12,7 @@ const gasStationDataUrl = "https://geoportal.stadt-koeln.de/arcgis/rest/services
 const App = () => {
   const [gasStationData, setGasStationData] = useState(null);
 
+  // Loads the data once
   useEffect(() => {
     fetch(gasStationDataUrl)
     .then(response => response.json())
