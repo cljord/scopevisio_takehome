@@ -1,7 +1,9 @@
 .gas-stations {
+  margin: 10px 0;
 }
 
 .gas-stations-grid {
+  margin: 10px 0;
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

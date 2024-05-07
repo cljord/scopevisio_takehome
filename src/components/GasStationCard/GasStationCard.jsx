@@ -16,26 +16,32 @@ const GasStationCard = ({gasStation}) => {
 	}
 
 	const getGasStationInformation = (gasStation) => {
-		if (!gasStation) return [null, null];
+		if (!gasStation) return [null, null, null];
 		const address = gasStation.attributes.adresse;
 		const streetNameAndNumber = address.slice(0, address.indexOf("(") - 1);
 		const zipCode = address.slice(address.indexOf("(") + 1, -1);
-		return [streetNameAndNumber, zipCode];
+		const gasStationId = gasStation.attributes.objectid;
+		return [streetNameAndNumber, zipCode, gasStationId];
 	}
 
 	if (!gasStation) {
 		return <div>Lade Tankstellen...</div>;
 	}
 
-	const gasStationInformation = gasStation ? getGasStationInformation(gasStation) : null;
+	const gasStationInformation = getGasStationInformation(gasStation);
 
 	return (
 		<div className="gas-station-card">
 			{gasStation && (
-				<div>
-					<img className="gas-station-logo" alt="gas station provider" src={getRandomGasStationProviderLogo()} />
-					<p>Straße & Hausnummer: {gasStationInformation[0]}</p>
-					<p>PLZ: {gasStationInformation[1]}</p>
+				<div className="content">
+					<div className="header">
+						<img className="gas-station-logo" alt="gas station provider" src={getRandomGasStationProviderLogo()} />
+						<h3>Tankstelle Nr. {gasStationInformation[2]}</h3>
+					</div>
+					<div className="details">
+						<p>Straße & Hausnummer: {gasStationInformation[0]}</p>
+						<p>PLZ: {gasStationInformation[1]}</p>
+					</div>
 				</div>
 			)}
 		</div>
