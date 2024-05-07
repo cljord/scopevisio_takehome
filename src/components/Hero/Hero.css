@@ -1,0 +1,25 @@
+.hero {
+	background: linear-gradient(rgba(8, 0, 58, 0.7), rgba(8, 0, 58, 0.7)), url("../../assets/gas-station.png");
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background-position-y: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: #fff;
+}
+
+.hero-text {
+	text-align: center;
+}
+
+.hero-text h1 {
+	font-size: 60px;
+}
+
+.hero-text p {
+	max-width: 700px;
+	margin: 10px auto 20px;
+	line-height: 1.4;
+}
