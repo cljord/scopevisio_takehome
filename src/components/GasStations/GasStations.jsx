@@ -23,29 +23,31 @@ const GasStations = ({gasStationData}) => {
 	}
 
 	const filterSearchedGasStations = (gasStationData) => {
+		if (!gasStationData || gasStationData.length === 0) {
+			return <div>Keine Tankstellen mit dieser Adresse gefunden</div>
+		}
 		const filteredGasStationData = gasStationData.filter((gasStation) => gasStation.attributes.adresse.toLowerCase().includes(searchString))
 		return filteredGasStationData
 	}
 
 	const renderGasStationCards = (gasStationData) => {
 		if (!gasStationData || gasStationData.length === 0) {
-			return <div>Keine Tankstellen mit dieser Adresse gefunden</div>
+			return <div>Keine Tankstellen gefunden</div>
 		}
 		
 		return gasStationData.map((gasStation) => 
-			<GasStationCard key={gasStation.attributes.objectid} gasStation={gasStation}/>
+			<GasStationCard gasStation={gasStation} key={gasStation.attributes.objectid} />
 		)
 	}
 
 	return (
 		<div className="gas-stations container">
 			<p style={{textAlign: "center"}}>Here be gas stations</p>
-			<button onClick={() => sortGasStations(processedGasStationData)}>Aufsteigende Sortierung</button>
-			<button onClick={() => sortGasStations(processedGasStationData, false)}>Absteigende Sortierung</button>
+			<button onClick={() => sortGasStations(processedGasStationData)} type="button">Aufsteigende Sortierung</button>
+			<button onClick={() => sortGasStations(processedGasStationData, false)} type="button">Absteigende Sortierung</button>
 			<input name="search-input" onChange={(e) => setSearchString(e.target.value.toLowerCase())}/>
 			<div className="gas-stations-grid">
-				{processedGasStationData && 
-					renderGasStationCards(filterSearchedGasStations(processedGasStationData))
+				{processedGasStationData ? renderGasStationCards(filterSearchedGasStations(processedGasStationData)) : <div>Keine Tankstellen gefunden</div>
 				}
 			</div>
 		</div>

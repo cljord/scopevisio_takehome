@@ -7,7 +7,7 @@ import logo from "../../assets/fuel-pump-white.png";
 const Navbar = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 
-	window.addEventListener("scroll", (event) => {
+	window.addEventListener("scroll", () => {
 		if (window.scrollY >= 100) {
 			setIsScrolled(true)
 		} else {
@@ -17,7 +17,7 @@ const Navbar = () => {
 
 	return (
 		<nav className={`container ${isScrolled && "dark-navbar"}`}>
-			<img className="logo" src={logo} alt="fuel pump" />
+			<img alt="fuel pump" className="logo" src={logo} />
 			<ul>
 				<li>Home</li>
 				<li>Karte</li>

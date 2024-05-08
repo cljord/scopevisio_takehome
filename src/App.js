@@ -24,7 +24,7 @@ const App = () => {
     <div>
       <Navbar />
       <Hero />
-      {/*<MapSection />*/}
+      <MapSection />
       <GasStations gasStationData={gasStationData}/>
       <Footer />
     </div>
