@@ -22,6 +22,21 @@ const GasStations = ({gasStationData}) => {
 		setProcessedGasStationData(sortedGasStationData);
 	}
 
+	const filterSearchedGasStations = (gasStationData) => {
+		const filteredGasStationData = gasStationData.filter((gasStation) => gasStation.attributes.adresse.toLowerCase().includes(searchString))
+		return filteredGasStationData
+	}
+
+	const renderGasStationCards = (gasStationData) => {
+		if (!gasStationData || gasStationData.length === 0) {
+			return <div>Keine Tankstellen mit dieser Adresse gefunden</div>
+		}
+		
+		return gasStationData.map((gasStation) => 
+			<GasStationCard key={gasStation.attributes.objectid} gasStation={gasStation}/>
+		)
+	}
+
 	return (
 		<div className="gas-stations container">
 			<p style={{textAlign: "center"}}>Here be gas stations</p>
@@ -30,11 +45,7 @@ const GasStations = ({gasStationData}) => {
 			<input name="search-input" onChange={(e) => setSearchString(e.target.value.toLowerCase())}/>
 			<div className="gas-stations-grid">
 				{processedGasStationData && 
-					processedGasStationData
-					.filter((gasStation) => gasStation.attributes.adresse.toLowerCase().includes(searchString))
-					.map((gasStation) => (
-						<GasStationCard key={gasStation.attributes.objectid} gasStation={gasStation}/>
-					))
+					renderGasStationCards(filterSearchedGasStations(processedGasStationData))
 				}
 			</div>
 		</div>
