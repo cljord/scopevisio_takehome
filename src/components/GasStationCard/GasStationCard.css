@@ -1,8 +1,5 @@
 .gas-station-card {
-/*	border: 1px lightgrey solid;*/
-/*	box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);*/
 	box-shadow: 1px 1px 5px 5px lightgrey;
-/*	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);*/
 	border-radius: 10px;
 	min-height: 16vh;
 }

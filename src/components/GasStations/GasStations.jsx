@@ -1,12 +1,15 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import GasStationCard from "../GasStationCard/GasStationCard";
+import Pagination from "../Pagination/Pagination";
 
 import "./GasStations.css";
 
 const GasStations = ({gasStationData}) => {
 	const [processedGasStationData, setProcessedGasStationData] = useProcessGasStationData(gasStationData);
 	const [searchString, setSearchString] = useState("");
+	const [currentPage, setCurrentPage] = useState(1);
+	const postsPerPage = 12;
 
 	if (!gasStationData) {
 		return <div className="container" style={{textAlign: "center"}}>Lade Tankstellen...</div>;
@@ -38,14 +41,18 @@ const GasStations = ({gasStationData}) => {
 		if (!gasStationData || gasStationData.length === 0) {
 			return <div>Keine Tankstellen gefunden</div>
 		}
+
+		const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentGasStations = gasStationData.slice(firstPostIndex, lastPostIndex);
 		
-		return gasStationData.map((gasStation) => 
+		return currentGasStations.map((gasStation) => 
 			<GasStationCard gasStation={gasStation} key={gasStation.attributes.objectid} />
 		)
 	}
 
 	return (
-		<div className="gas-stations container">
+		<div className="gas-stations">
 			<p style={{textAlign: "center"}}>Here be gas stations</p>
 			<button onClick={() => sortGasStations(processedGasStationData)} type="button">Aufsteigende Sortierung</button>
 			<button onClick={() => sortGasStations(processedGasStationData, false)} type="button">Absteigende Sortierung</button>
@@ -54,6 +61,10 @@ const GasStations = ({gasStationData}) => {
 				{processedGasStationData ? renderGasStationCards(filterSearchedGasStations(processedGasStationData)) : <div>Keine Tankstellen gefunden</div>
 				}
 			</div>
+			{processedGasStationData ?
+			  <Pagination currentPage={currentPage} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} totalPosts={processedGasStationData.length} />
+			  : null
+			}
 		</div>
 	)
 }

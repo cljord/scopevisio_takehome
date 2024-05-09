@@ -24,9 +24,11 @@ const App = () => {
     <div>
       <Navbar />
       <Hero />
-      <MapSection />
-      <GasStations gasStationData={gasStationData}/>
-      <Footer />
+      <div className="container">
+        <MapSection />
+        <GasStations gasStationData={gasStationData}/>
+        <Footer />
+      </div>
     </div>
   )
 }
