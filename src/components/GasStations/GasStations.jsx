@@ -63,7 +63,7 @@ const GasStations = ({gasStationData}) => {
 			</div>
 			{processedGasStationData ?
 			  <Pagination currentPage={currentPage} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} totalPosts={processedGasStationData.length} />
-			  : null
+			  : <div></div>
 			}
 		</div>
 	)
