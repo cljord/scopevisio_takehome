@@ -15,9 +15,13 @@ const GasStations = ({gasStationData}) => {
 	const sortGasStations = (gasStationData, asc = true) => {
 		const sortedGasStationData = [...gasStationData];
 		if (asc) {
-			sortedGasStationData.sort((a, b) => ("" + a.attributes.adresse).localeCompare(b.attributes.adresse))
+			sortedGasStationData.sort((a, b) =>
+				("" + a.attributes.adresse).localeCompare(b.attributes.adresse)
+				)
 		} else {
-			sortedGasStationData.sort((a, b) => ("" + b.attributes.adresse).localeCompare(a.attributes.adresse))
+			sortedGasStationData.sort((a, b) =>
+				("" + b.attributes.adresse).localeCompare(a.attributes.adresse)
+				)
 		}
 		setProcessedGasStationData(sortedGasStationData);
 	}
@@ -26,8 +30,8 @@ const GasStations = ({gasStationData}) => {
 		if (!gasStationData || gasStationData.length === 0) {
 			return <div>Keine Tankstellen mit dieser Adresse gefunden</div>
 		}
-		const filteredGasStationData = gasStationData.filter((gasStation) => gasStation.attributes.adresse.toLowerCase().includes(searchString))
-		return filteredGasStationData
+		const searchedGasStationData = gasStationData.filter((gasStation) => gasStation.attributes.adresse.toLowerCase().includes(searchString))
+		return searchedGasStationData
 	}
 
 	const renderGasStationCards = (gasStationData) => {
