@@ -9,7 +9,7 @@ const GasStations = ({gasStationData, currentGasStationId, setCurrentGasStationI
 	const [processedGasStationData, setProcessedGasStationData] = useProcessGasStationData(gasStationData);
 	const [searchString, setSearchString] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
-	const postsPerPage = 12;
+	const postsPerPage = 9;
 
 	if (!gasStationData) {
 		return <div className="container" style={{textAlign: "center"}}>Lade Tankstellen...</div>;
@@ -54,15 +54,17 @@ const GasStations = ({gasStationData, currentGasStationId, setCurrentGasStationI
 	return (
 		<div className="gas-stations">
 			<p style={{textAlign: "center"}}>Here be gas stations</p>
-			<button onClick={() => sortGasStations(processedGasStationData)} type="button">Aufsteigende Sortierung</button>
-			<button onClick={() => sortGasStations(processedGasStationData, false)} type="button">Absteigende Sortierung</button>
-			<input name="search-input" onChange={(e) => setSearchString(e.target.value.toLowerCase())}/>
+			<div className="gas-stations-card-options">
+				<button onClick={() => sortGasStations(processedGasStationData)} type="button">Aufsteigende Sortierung</button>
+				<button onClick={() => sortGasStations(processedGasStationData, false)} type="button">Absteigende Sortierung</button>
+				<input name="search-input" onChange={(e) => setSearchString(e.target.value.toLowerCase())} placeholder="Suche" />
+			</div>
 			<div className="gas-stations-grid">
 				{processedGasStationData ? renderGasStationCards(filterSearchedGasStations(processedGasStationData)) : <div>Keine Tankstellen gefunden</div>
 				}
 			</div>
 			{processedGasStationData ?
-			  <Pagination currentPage={currentPage} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} totalPosts={processedGasStationData.length} />
+			  <Pagination currentPage={currentPage} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} totalPosts={filterSearchedGasStations(processedGasStationData).length} />
 			  : <div></div>
 			}
 		</div>

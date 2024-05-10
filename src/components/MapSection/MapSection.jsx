@@ -8,8 +8,10 @@ import pump from "../../assets/fuel-pump-black.png";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "./MapSection.css";
 
+const mapboxApiKey = process.env.REACT_APP_MAPBOX_KEY
+
 const MapSection = ({ gasStationData, currentGasStationId, setCurrentGasStationId }) => {
-	const [processedGasStationData, setProcessedGasStationData] = useProcessGasStationData(gasStationData);
+	const [processedGasStationData] = useProcessGasStationData(gasStationData);
 
   const [viewState, setViewState] = useState({
     latitude: 50.916095041454554,
@@ -35,7 +37,7 @@ const MapSection = ({ gasStationData, currentGasStationId, setCurrentGasStationI
         		latitude={gasStation.geometry.y}
         		longitude={gasStation.geometry.x}
         	>
-        	<img src={pump} className={gasStation.attributes.objectid === currentGasStationId ? "active" : ""}  />
+        	<img alt="fuel pump" className={gasStation.attributes.objectid === currentGasStationId ? "active" : ""} src={pump} />
         	</Marker>
         ))}
       </Map>

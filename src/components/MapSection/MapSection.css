@@ -9,6 +9,15 @@
 	z-index: 0;
 }
 
+.mapboxgl-ctrl-bottom-right {
+	z-index: 0;
+}
+
+.mapboxgl-ctrl-bottom-left {
+	z-index: 0;
+}
+
+
 .marker {
 	font-size: 10;
 }

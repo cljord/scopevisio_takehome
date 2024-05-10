@@ -8,3 +8,32 @@
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
+
+.gas-stations-card-options {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.gas-stations-card-options button {
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: #212ea0;
+  color: white;
+  padding: 4px 8px;
+  border: 0;
+  transition: color 0.5s, background-color 0.5s;
+  margin: 10px;
+}
+
+.gas-stations-card-options button:hover {
+  color: black;
+  background: #ffe400;
+}
+
+.gas-stations-card-options input {
+  border-radius: 30px;
+  padding: 4px 8px;
+  margin: 10px;
+  border: 2px solid #212ea0;
+}
