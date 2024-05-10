@@ -11,6 +11,7 @@ const gasStationDataUrl = "https://geoportal.stadt-koeln.de/arcgis/rest/services
 
 const App = () => {
   const [gasStationData, setGasStationData] = useState(null);
+  const [currentGasStationId, setCurrentGasStationId] = useState(98)
 
   // Loads the data once
   useEffect(() => {
@@ -25,8 +26,8 @@ const App = () => {
       <Navbar />
       <Hero />
       <div className="container">
-        <MapSection gasStationData={gasStationData}/>
-        <GasStations gasStationData={gasStationData}/>
+        <MapSection gasStationData={gasStationData} currentGasStationId={currentGasStationId} setCurrentGasStationId={setCurrentGasStationId}/>
+        <GasStations gasStationData={gasStationData} currentGasStationId={currentGasStationId} setCurrentGasStationId={setCurrentGasStationId}/>
         <Footer />
       </div>
     </div>

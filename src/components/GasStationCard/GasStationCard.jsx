@@ -6,7 +6,7 @@ import shellLogo from "../../assets/Shell_logo.svg.png";
 
 import "./GasStationCard.css";
 
-const GasStationCard = ({gasStation}) => {
+const GasStationCard = ({gasStation, currentGasStationId, setCurrentGasStationId}) => {
 
 	const getRandomGasStationProviderLogo = () => {
 		// To make the site a bite more colourful, random logos of
@@ -36,7 +36,7 @@ const GasStationCard = ({gasStation}) => {
 	const gasStationInformation = getGasStationInformation(gasStation);
 
 	return (
-		<div className="gas-station-card">
+		<div className={`gas-station-card ${gasStationInformation[2] === currentGasStationId ? "active" : ""}`} onClick={() => setCurrentGasStationId(gasStationInformation[2])}>
 				<div className="content">
 					<div className="header">
 						<img alt="gas station provider" className="gas-station-logo" src={getRandomGasStationProviderLogo()} />

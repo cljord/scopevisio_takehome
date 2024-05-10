@@ -12,3 +12,15 @@
 .marker {
 	font-size: 10;
 }
+
+.map-container img {
+	box-sizing: border-box;
+	height: 25px;
+	padding: 5px;
+}
+
+.map-container img.active {
+	height: 35px;
+	border: 5px solid green;
+	box-sizing: border-box;
+}

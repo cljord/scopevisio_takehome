@@ -27,3 +27,6 @@
 	width: 48px;
 }
 
+.gas-station-card.active {
+	background-color: #ffe400;
+}

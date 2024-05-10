@@ -5,7 +5,7 @@ import Pagination from "../Pagination/Pagination";
 
 import "./GasStations.css";
 
-const GasStations = ({gasStationData}) => {
+const GasStations = ({gasStationData, currentGasStationId, setCurrentGasStationId }) => {
 	const [processedGasStationData, setProcessedGasStationData] = useProcessGasStationData(gasStationData);
 	const [searchString, setSearchString] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
@@ -47,7 +47,7 @@ const GasStations = ({gasStationData}) => {
     const currentGasStations = gasStationData.slice(firstPostIndex, lastPostIndex);
 		
 		return currentGasStations.map((gasStation) => 
-			<GasStationCard gasStation={gasStation} key={gasStation.attributes.objectid} />
+			<GasStationCard gasStation={gasStation} key={gasStation.attributes.objectid} currentGasStationId={currentGasStationId} setCurrentGasStationId={setCurrentGasStationId} />
 		)
 	}
 

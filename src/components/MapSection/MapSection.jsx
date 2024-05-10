@@ -3,10 +3,12 @@ import Map, { Marker } from 'react-map-gl';
 
 import GeocoderControl from "./geocoder-control.tsx";
 
+import pump from "../../assets/fuel-pump-black.png";
+
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "./MapSection.css";
 
-const MapSection = ({ gasStationData }) => {
+const MapSection = ({ gasStationData, currentGasStationId, setCurrentGasStationId }) => {
 	const [processedGasStationData, setProcessedGasStationData] = useProcessGasStationData(gasStationData);
 
   const [viewState, setViewState] = useState({
@@ -28,10 +30,12 @@ const MapSection = ({ gasStationData }) => {
         <GeocoderControl mapboxAccessToken={mapboxApiKey} position="top-right" />
         {processedGasStationData.map((gasStation) => (
         	<Marker
+        		onClick={(event) => setCurrentGasStationId(gasStation.attributes.objectid)}
         		key={gasStation.attributes.objectid}
         		latitude={gasStation.geometry.y}
         		longitude={gasStation.geometry.x}
-        	><div className="marker">{gasStation.attributes.objectid}</div>
+        	>
+        	<img src={pump} className={gasStation.attributes.objectid === currentGasStationId ? "active" : ""}  />
         	</Marker>
         ))}
       </Map>
