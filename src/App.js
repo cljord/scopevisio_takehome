@@ -25,7 +25,7 @@ const App = () => {
       <Navbar />
       <Hero />
       <div className="container">
-        <MapSection />
+        <MapSection gasStationData={gasStationData}/>
         <GasStations gasStationData={gasStationData}/>
         <Footer />
       </div>

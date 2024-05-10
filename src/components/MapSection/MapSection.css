@@ -1,0 +1,14 @@
+.map-container {
+	margin: 5vh auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mapboxgl-ctrl-top-right {
+	z-index: 0;
+}
+
+.marker {
+	font-size: 10;
+}
