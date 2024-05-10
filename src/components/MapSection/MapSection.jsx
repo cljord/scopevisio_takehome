@@ -6,8 +6,6 @@ import GeocoderControl from "./geocoder-control.tsx";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "./MapSection.css";
 
-const mapboxApiKey = "pk.eyJ1Ijoid2h5dW5lZCIsImEiOiJjbHcwYmFlZmsydnJzMmlxejB6eGwzMmFjIn0.BDEZaqFtOQtU2DHFsYM8pQ"
-
 const MapSection = ({ gasStationData }) => {
 	const [processedGasStationData, setProcessedGasStationData] = useProcessGasStationData(gasStationData);
 
