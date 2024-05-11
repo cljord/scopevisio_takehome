@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
-import Map, { Marker } from 'react-map-gl';
+import Map, { Marker } from "react-map-gl";
 
 import GeocoderControl from "./geocoder-control.tsx";
 
 import pump from "../../assets/fuel-pump-black.png";
 
-import 'mapbox-gl/dist/mapbox-gl.css';
+import "mapbox-gl/dist/mapbox-gl.css";
 import "./MapSection.css";
 
-const mapboxApiKey = process.env.REACT_APP_MAPBOX_KEY
+const mapboxApiKey = process.env.REACT_APP_MAPBOX_KEY;
 
-const MapSection = ({ gasStationData, currentGasStationId, setCurrentGasStationId }) => {
-	const [processedGasStationData] = useProcessGasStationData(gasStationData);
+const MapSection = ({
+  gasStationData,
+  currentGasStationId,
+  setCurrentGasStationId,
+}) => {
+  const [processedGasStationData] = useProcessGasStationData(gasStationData);
 
   const [viewState, setViewState] = useState({
     latitude: 50.916095041454554,
@@ -19,41 +23,55 @@ const MapSection = ({ gasStationData, currentGasStationId, setCurrentGasStationI
     zoom: 11,
   });
 
-  return (
-    processedGasStationData ? (
+  return processedGasStationData ? (
     <div className="map-container">
       <Map
         {...viewState}
         mapStyle="mapbox://styles/mapbox/outdoors-v12"
         mapboxAccessToken={mapboxApiKey}
-        onMove={event => setViewState(event.viewState)}
-        style={{width: 800, height: 600}}
+        onMove={(event) => setViewState(event.viewState)}
+        style={{ width: 800, height: 600 }}
       >
-        <GeocoderControl mapboxAccessToken={mapboxApiKey} position="top-right" />
+        <GeocoderControl
+          mapboxAccessToken={mapboxApiKey}
+          position="top-right"
+        />
         {processedGasStationData.map((gasStation) => (
-        	<Marker
+          <Marker
             key={gasStation.attributes.objectid}
             latitude={gasStation.geometry.y}
             longitude={gasStation.geometry.x}
-        		onClick={() => setCurrentGasStationId(gasStation.attributes.objectid)}
-        	>
-        	<img alt="fuel pump" className={gasStation.attributes.objectid === currentGasStationId ? "active" : ""} src={pump} />
-        	</Marker>
+            onClick={() =>
+              setCurrentGasStationId(gasStation.attributes.objectid)
+            }
+          >
+            <img
+              alt="fuel pump"
+              className={
+                gasStation.attributes.objectid === currentGasStationId
+                  ? "active"
+                  : ""
+              }
+              src={pump}
+            />
+          </Marker>
         ))}
       </Map>
-    </div> )
-    : <div/>
+    </div>
+  ) : (
+    <div />
   );
 };
 
 const useProcessGasStationData = (initialGasStationData) => {
-	const [processedGasStationData, setProcessedGasStationData] = useState(null);
+  const [processedGasStationData, setProcessedGasStationData] = useState(null);
 
-	useEffect(() => {
-		if (initialGasStationData) setProcessedGasStationData(initialGasStationData.features);
-	}, [initialGasStationData]);
+  useEffect(() => {
+    if (initialGasStationData)
+      setProcessedGasStationData(initialGasStationData.features);
+  }, [initialGasStationData]);
 
-	return [processedGasStationData, setProcessedGasStationData];
-}
+  return [processedGasStationData, setProcessedGasStationData];
+};
 
 export default MapSection;

@@ -1,37 +1,37 @@
 nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 16px 16px;
-	height: 80px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	color: #fff;
-	transition: background-color 0.5s;
-	z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 16px;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  transition: background-color 0.5s;
+  z-index: 1;
 }
 
 .logo {
-	width: 50px;
+  width: 50px;
 }
 
 nav ul {
-	list-style: none;
-	display: flex;
+  list-style: none;
+  display: flex;
 }
 
 nav ul li {
-	padding: 0px 20px;
-	font-size: 16px;
-	cursor: pointer;
+  padding: 0px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .dark-navbar {
-	background-color: #212ea0;
+  background-color: #212ea0;
 }
 
 nav ul a {
-	all: unset;
+  all: unset;
 }
