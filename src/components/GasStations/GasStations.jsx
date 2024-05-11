@@ -47,16 +47,15 @@ const GasStations = ({gasStationData, currentGasStationId, setCurrentGasStationI
     const currentGasStations = gasStationData.slice(firstPostIndex, lastPostIndex);
 		
 		return currentGasStations.map((gasStation) => 
-			<GasStationCard gasStation={gasStation} key={gasStation.attributes.objectid} currentGasStationId={currentGasStationId} setCurrentGasStationId={setCurrentGasStationId} />
+			<GasStationCard currentGasStationId={currentGasStationId} gasStation={gasStation} key={gasStation.attributes.objectid} setCurrentGasStationId={setCurrentGasStationId} />
 		)
 	}
 
 	return (
 		<div className="gas-stations">
-			<p style={{textAlign: "center"}}>Here be gas stations</p>
 			<div className="gas-stations-card-options">
-				<button onClick={() => sortGasStations(processedGasStationData)} type="button">Aufsteigende Sortierung</button>
-				<button onClick={() => sortGasStations(processedGasStationData, false)} type="button">Absteigende Sortierung</button>
+				<button onClick={() => sortGasStations(processedGasStationData)} type="button">Aufsteigend sortieren</button>
+				<button onClick={() => sortGasStations(processedGasStationData, false)} type="button">Absteigend sortieren</button>
 				<input name="search-input" onChange={(e) => setSearchString(e.target.value.toLowerCase())} placeholder="Suche" />
 			</div>
 			<div className="gas-stations-grid">
@@ -65,7 +64,7 @@ const GasStations = ({gasStationData, currentGasStationId, setCurrentGasStationI
 			</div>
 			{processedGasStationData ?
 			  <Pagination currentPage={currentPage} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} totalPosts={filterSearchedGasStations(processedGasStationData).length} />
-			  : <div></div>
+			  : <div/>
 			}
 		</div>
 	)

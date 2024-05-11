@@ -19,7 +19,9 @@ code {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-/*  font-family: "Outfit", sans-serif;*/
+  scroll-behavior: smooth;
+  scroll-margin-top: 80px; /* height of the navbar */
+  font-family: "Outfit", sans-serif;
 }
 
 .container {

@@ -9,8 +9,8 @@ import "./GasStationCard.css";
 const GasStationCard = ({gasStation, currentGasStationId, setCurrentGasStationId}) => {
 
 	const getRandomGasStationProviderLogo = () => {
-		// To make the site a bite more colourful, random logos of
-		// gas stations are added. A full version would prbbly have these supplied
+		// To make the site a bite more colourful, add random logos of
+		// gas stations. A full version would probably have these supplied
 		const gasStationProviderLogos = [aralLogo, essoLogo, shellLogo];
 		const getRandomInt = () => {
 			return Math.floor(Math.random() * 100);
@@ -33,18 +33,18 @@ const GasStationCard = ({gasStation, currentGasStationId, setCurrentGasStationId
 		return <div>Lade Tankstellen...</div>;
 	}
 
-	const gasStationInformation = getGasStationInformation(gasStation);
+	const [streetNameAndNumber, zipCode, gasStationId] = getGasStationInformation(gasStation);
 
 	return (
-		<div className={`gas-station-card ${gasStationInformation[2] === currentGasStationId ? "active" : ""}`} onClick={() => setCurrentGasStationId(gasStationInformation[2])}>
+		<div className={`gas-station-card ${gasStationId === currentGasStationId ? "active" : ""}`} onClick={() => setCurrentGasStationId(gasStationId)}>
 				<div className="content">
 					<div className="header">
 						<img alt="gas station provider" className="gas-station-logo" src={getRandomGasStationProviderLogo()} />
-						<h3>Tankstelle Nr. {gasStationInformation[2]}</h3>
+						<h3>Tankstelle Nr. {gasStationId}</h3>
 					</div>
 					<div className="details">
-						<p>Straße & Hausnummer: {gasStationInformation[0]}</p>
-						<p>PLZ: {gasStationInformation[1]}</p>
+						<p>Straße & Hausnummer: {streetNameAndNumber}</p>
+						<p>PLZ: {zipCode}</p>
 					</div>
 				</div>
 		</div>

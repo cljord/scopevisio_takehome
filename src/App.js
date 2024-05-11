@@ -4,6 +4,7 @@ import GasStations from "./components/GasStations/GasStations";
 import Hero from "./components/Hero/Hero";
 import MapSection from "./components/MapSection/MapSection";
 import Navbar from "./components/Navbar/Navbar";
+import Title from "./components/Title/Title";
 
 import {useState, useEffect} from "react";
 
@@ -26,8 +27,10 @@ const App = () => {
       <Navbar />
       <Hero />
       <div className="container">
-        <MapSection gasStationData={gasStationData} currentGasStationId={currentGasStationId} setCurrentGasStationId={setCurrentGasStationId}/>
-        <GasStations gasStationData={gasStationData} currentGasStationId={currentGasStationId} setCurrentGasStationId={setCurrentGasStationId}/>
+        <Title id="map-id" subtitle="Für den schnellen Überblick" title="Die Karte" />
+        <MapSection currentGasStationId={currentGasStationId} gasStationData={gasStationData} setCurrentGasStationId={setCurrentGasStationId}/>
+        <Title id="grid-id" subtitle="Für die Details" title="Die Tabelle" />
+        <GasStations currentGasStationId={currentGasStationId} gasStationData={gasStationData} setCurrentGasStationId={setCurrentGasStationId}/>
         <Footer />
       </div>
     </div>

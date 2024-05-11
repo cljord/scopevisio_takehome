@@ -19,10 +19,9 @@ const Navbar = () => {
 		<nav className={`container ${isScrolled && "dark-navbar"}`}>
 			<img alt="fuel pump" className="logo" src={logo} />
 			<ul>
-				<li>Home</li>
-				<li>Karte</li>
-				<li>Tankstellen</li>
-				<li>Kontakt</li>
+				<a href="#hero-id"><li>Home</li></a>
+				<a href="#map-id"><li>Karte</li></a>
+				<a href="#grid-id"><li>Tankstellen</li></a>
 			</ul>
 		</nav>
 	)

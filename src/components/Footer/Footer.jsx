@@ -9,6 +9,7 @@ const Footer = () => {
 				<ul>
 					<li>Impressum</li>
 					<li>Datenschutz</li>
+					<li>Kontakt</li>
 				</ul>
 			</div>
 	)

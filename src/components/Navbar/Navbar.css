@@ -25,8 +25,13 @@ nav ul {
 nav ul li {
 	padding: 0px 20px;
 	font-size: 16px;
+	cursor: pointer;
 }
 
 .dark-navbar {
 	background-color: #212ea0;
+}
+
+nav ul a {
+	all: unset;
 }

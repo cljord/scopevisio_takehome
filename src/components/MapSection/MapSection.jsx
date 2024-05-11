@@ -16,7 +16,7 @@ const MapSection = ({ gasStationData, currentGasStationId, setCurrentGasStationI
   const [viewState, setViewState] = useState({
     latitude: 50.916095041454554,
     longitude: 6.960644911005172,
-    zoom: 15,
+    zoom: 11,
   });
 
   return (
@@ -24,25 +24,25 @@ const MapSection = ({ gasStationData, currentGasStationId, setCurrentGasStationI
     <div className="map-container">
       <Map
         {...viewState}
-        style={{width: 800, height: 600}}
         mapStyle="mapbox://styles/mapbox/outdoors-v12"
         mapboxAccessToken={mapboxApiKey}
         onMove={event => setViewState(event.viewState)}
+        style={{width: 800, height: 600}}
       >
         <GeocoderControl mapboxAccessToken={mapboxApiKey} position="top-right" />
         {processedGasStationData.map((gasStation) => (
         	<Marker
-        		onClick={(event) => setCurrentGasStationId(gasStation.attributes.objectid)}
-        		key={gasStation.attributes.objectid}
-        		latitude={gasStation.geometry.y}
-        		longitude={gasStation.geometry.x}
+            key={gasStation.attributes.objectid}
+            latitude={gasStation.geometry.y}
+            longitude={gasStation.geometry.x}
+        		onClick={() => setCurrentGasStationId(gasStation.attributes.objectid)}
         	>
         	<img alt="fuel pump" className={gasStation.attributes.objectid === currentGasStationId ? "active" : ""} src={pump} />
         	</Marker>
         ))}
       </Map>
     </div> )
-    : <div></div>
+    : <div/>
   );
 };
 

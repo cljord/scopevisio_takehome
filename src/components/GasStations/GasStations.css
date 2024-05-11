@@ -24,6 +24,7 @@
   border: 0;
   transition: color 0.5s, background-color 0.5s;
   margin: 10px;
+  width: 150px;
 }
 
 .gas-stations-card-options button:hover {
@@ -36,4 +37,5 @@
   padding: 4px 8px;
   margin: 10px;
   border: 2px solid #212ea0;
+  width: 150px;
 }
