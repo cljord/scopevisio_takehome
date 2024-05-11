@@ -28,5 +28,6 @@
 }
 
 .gas-station-card.active {
-  background-color: #ffe400;
+  background-color: #212ea0;
+  color: white;
 }

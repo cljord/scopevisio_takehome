@@ -36,10 +36,10 @@
 /* CSS */
 .hero a {
   appearance: none;
-  background-color: #63003f;
-  border: 2px solid #1a1a1a;
+  background-color: #212ea0;
+  border: 2px solid #212ea0;
   border-radius: 15px;
-  color: #dfdfdf;
+  color: white;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
@@ -54,8 +54,8 @@
 }
 
 .hero a:hover {
-  color: #fff;
-  background-color: #212ea0;
+  color: #212ea0;
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }

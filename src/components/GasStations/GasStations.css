@@ -21,7 +21,7 @@
   background-color: #212ea0;
   color: white;
   padding: 4px 8px;
-  border: 0;
+  border: 1px solid #212ea0;
   transition:
     color 0.5s,
     background-color 0.5s;
@@ -30,8 +30,8 @@
 }
 
 .gas-stations-card-options button:hover {
-  color: black;
-  background: #ffe400;
+  color: #212ea0;
+  background: white;
 }
 
 .gas-stations-card-options input {
