@@ -1,3 +1,7 @@
 eslint.config.js
 src/setupTests.js
 src/reportWebVitals.js
+.github/*
+public/index.html
+src/App.test.js
+src/index.js
