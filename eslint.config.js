@@ -31,7 +31,7 @@ const globals = require('globals');
 
 module.exports = [
   {
-    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+    files: ['**/*.{js,jsx}'],
     ...reactRecommended,
     settings: {
       react: {

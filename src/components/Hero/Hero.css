@@ -35,10 +35,10 @@
 /* CSS */
 .hero a {
   appearance: none;
-  background-color: #a5a5a5;
+  background-color: #63003f;
   border: 2px solid #1A1A1A;
   border-radius: 15px;
-  color: #363636;
+  color: #dfdfdf;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
