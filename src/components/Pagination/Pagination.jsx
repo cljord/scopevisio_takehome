@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 
 import "./Pagination.css";
 
@@ -8,11 +9,19 @@ const Pagination = ({
   setCurrentPage,
   currentPage,
 }) => {
-  let pages = [];
+  const [pages, setPages] = useState([]);
 
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pages.push(i);
-  }
+  useEffect(() => {
+    let pages = [];
+
+    for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+      pages.push(i);
+    }
+
+    setCurrentPage(Math.min(pages.length, currentPage));
+
+    setPages(pages);
+  }, [totalPosts]);
 
   return (
     <div className="pagination">
