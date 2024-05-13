@@ -17,6 +17,10 @@ const App = () => {
 
   // Loads the data once
   useEffect(() => {
+    // TODO: add processing here instead of in the MapSection
+    // and GasStation components
+    // TODO: use try-catch instead to be able to add loading
+    // and error variables, for more accurate display of components
     fetch(gasStationDataUrl)
       .then((response) => response.json())
       .then((data) => setGasStationData(data))
