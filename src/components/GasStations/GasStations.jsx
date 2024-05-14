@@ -14,6 +14,10 @@ const GasStations = ({
     useProcessGasStationData(gasStationData);
   const [searchString, setSearchString] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  // TODO: change postsPerPage more dynamically to be more
+  // more responsive at different screen sizes
+  // currently e.g. large screens have 4-4-1 grid, smaller
+  // screens have 3-3-3 grid
   const postsPerPage = 9;
 
   if (!gasStationData) {
