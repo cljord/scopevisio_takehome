@@ -13,6 +13,9 @@ const gasStationDataUrl =
 
 const App = () => {
   const [gasStationData, setGasStationData] = useState(null);
+  // 98 is id of first gasstation in the dataset
+  // and therefore the first card to be shown
+  // by setting the gasStationId to 98 we can highlight it immediately
   const [currentGasStationId, setCurrentGasStationId] = useState(98);
 
   // Loads the data once
